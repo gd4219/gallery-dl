@@ -303,6 +303,7 @@ class FlickrAPI(oauth.OAuth1API):
 
         self.videos = extractor.config("videos", True)
         self.maxsize = extractor.config("size-max")
+        self.sortType = extractor.config("sort")
         if isinstance(self.maxsize, str):
             for fmt, fmtname, fmtwidth in self.FORMATS:
                 if self.maxsize == fmt or self.maxsize == fmtname:
@@ -363,6 +364,11 @@ class FlickrAPI(oauth.OAuth1API):
         return sizes
 
     def photos_search(self, params):
+        if self.sortType :
+            types = ("relevance", "date-posted-desc", "date-taken-desc", "interestingness-desc")
+            for t in types:
+                if t == self.sortType:
+                    params["sort"] = t
         """Return a list of photos matching some criteria."""
         return self._pagination("photos.search", params.copy())
 

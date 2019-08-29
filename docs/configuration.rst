@@ -661,6 +661,16 @@ Default     ``true``
 Description Extract and download videos.
 =========== =====
 
+extractor.flickr.sort
+-----------------------
+=========== =====
+Type        ``string``
+Default     ``date-posted-desc``
+Description ("relevance", "date-posted-desc", "date-taken-desc", "interestingness-desc").
+
+            * default is date-posted-desc if you dont setup this key.
+=========== =====
+
 
 extractor.flickr.size-max
 --------------------------
