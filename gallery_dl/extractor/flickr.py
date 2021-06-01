@@ -304,6 +304,12 @@ class FlickrAPI(oauth.OAuth1API):
         self.videos = extractor.config("videos", True)
         self.maxsize = extractor.config("size-max")
         self.sortType = extractor.config("sort")
+        #Commercial use allowed 4,5,6,9,10
+        #Modifications allowed 1,2,9,10
+        #No known copyright restrictions 7,9,10
+        #Commercial use & mods allowed 4,5,9,10
+        #U.S. Government works 8
+        self.licenseType = extractor.config("license")
         if isinstance(self.maxsize, str):
             for fmt, fmtname, fmtwidth in self.FORMATS:
                 if self.maxsize == fmt or self.maxsize == fmtname:
@@ -369,6 +375,10 @@ class FlickrAPI(oauth.OAuth1API):
             for t in types:
                 if t == self.sortType:
                     params["sort"] = t
+        if self.licenseType:
+            params["license"] = self.licenseType
+        else:
+            print(f"\033[93mAll license photo will be download!!!\033[0m")
         """Return a list of photos matching some criteria."""
         return self._pagination("photos.search", params.copy())
 

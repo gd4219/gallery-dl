@@ -671,6 +671,19 @@ Description ("relevance", "date-posted-desc", "date-taken-desc", "interestingnes
             * default is date-posted-desc if you dont setup this key.
 =========== =====
 
+extractor.flickr.license
+-----------------------
+=========== =====
+Type        ``string``
+Default     ``null``
+Description Commercial use allowed 4,5,6,9,10;
+            Modifications allowed 1,2,9,10;
+            No known copyright restrictions 7,9,10;
+            Commercial use & mods allowed 4,5,9,10;
+            U.S. Government works 8;
+            * default is null if you dont setup this key.
+=========== =====
+
 
 extractor.flickr.size-max
 --------------------------
